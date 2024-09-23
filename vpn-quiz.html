@@ -135,9 +135,20 @@
             margin-bottom: 20px;
         }
         .desktop-only {
-            margin-top: 40px;
+            display: none; /* Hidden by default */
         }
-        @media screen and (max-width: 1024px) {
+        @media screen and (min-width: 768px) {
+            /* First Article: Visible on tablet and up */
+            .tablet-and-desktop-only {
+                display: block;
+            }
+            /* Second Article: Visible only on desktop */
+            .desktop-only {
+                display: block;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            /* Ensure second article remains hidden on small screens */
             .desktop-only {
                 display: none;
             }
@@ -151,6 +162,22 @@
         #correctAnswers li {
             margin-bottom: 10px;
             font-size: 18px;
+        }
+        /* Reset Button Styling */
+        .reset-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .reset-btn:hover {
+            background-color: #2980b9;
         }
     </style>
 </head>
@@ -214,6 +241,7 @@
         </div>
 
         <button type="button" class="submit-btn" onclick="checkAnswers()">Check Answers</button>
+        <button type="button" class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
     </form>
 
     <div id="results">
@@ -224,11 +252,11 @@
 
     <div id="promotion">
         <p><strong>Your privacy matters</strong> — learn how to safeguard it effectively.</p>
-        <a href="#">Get Started HERE!</a>
+        <a href="https://your-promotion-link.com">Get Started HERE!</a>
     </div>
 
-    <!-- Article displayed only on desktop -->
-    <div class="desktop-only article">
+    <!-- First Article: Visible on Tablet and Desktop -->
+    <div class="tablet-and-desktop-only article">
         <h2>Why You Should Use a VPN: Key Benefits Explained</h2>
         
         <div style="display: flex; flex-wrap: wrap; align-items: flex-start;">
@@ -288,6 +316,57 @@
         <p>Despite all these advanced benefits, VPNs are surprisingly easy to set up and use. Most VPN providers offer user-friendly apps for multiple devices, including desktops, smartphones, and tablets. This means that even users without technical expertise can start using a VPN in just a few clicks, enjoying instant benefits such as enhanced privacy and access to restricted content.</p>
     </div>
 
+    <!-- Second Article: Visible only on Desktop -->
+    <div class="desktop-only article">
+        <h2>Advanced VPN Features You Should Know About</h2>
+        
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-start;">
+            <!-- Introduction on the left -->
+            <div style="flex: 1; min-width: 300px;">
+                <p>As the demand for online privacy and security continues to rise, VPN providers are constantly evolving their services to offer more advanced features. In this article, we explore some of the cutting-edge VPN functionalities that can enhance your online experience, providing greater control and protection.</p>
+            </div>
+            <!-- Image on the right -->
+            <div style="flex: 0 0 300px; max-width: 300px; margin-left: 20px;">
+                <img class="article-image" src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg" alt="Advanced VPN Features">
+            </div>
+        </div>
+
+        <!-- Additional sections of the article -->
+        <h3>1. Multi-Hop VPN</h3>
+        <p>A Multi-Hop VPN routes your internet traffic through multiple VPN servers in different locations before reaching its final destination. This adds an extra layer of security and anonymity, making it even more difficult for anyone to trace your online activities back to you.</p>
+
+        <!-- Image within the article, on the left side -->
+        <div style="display: flex; align-items: center; margin: 20px 0;">
+            <div style="flex: 0 0 250px; margin-right: 20px;">
+                <img src="https://24ai.tech/en/wp-content/uploads/sites/3/2023/10/01_product_1_sdelat-izobrazhenie-1-1-7-scaled.jpg" alt="Multi-Hop VPN" style="width: 100%; height: auto;">
+            </div>
+            <div style="flex: 1;">
+                <p>By utilizing multiple VPN servers, Multi-Hop VPNs significantly increase your online privacy. Even if one server is compromised, your data remains secure as it passes through additional servers.</p>
+            </div>
+        </div>
+
+        <h3>2. Split Tunneling</h3>
+        <p>Split Tunneling allows you to choose which applications or websites use the VPN connection and which ones connect directly to the internet. This feature is particularly useful for optimizing bandwidth usage and ensuring that sensitive data is always encrypted while other activities remain unaffected.</p>
+
+        <h3>3. Dedicated IP Addresses</h3>
+        <p>Some VPN providers offer dedicated IP addresses, which are unique to you and not shared with other users. Having a dedicated IP can be beneficial for accessing certain online services that require consistent IP addresses, such as remote work platforms or secure online accounts.</p>
+
+        <h3>4. Obfuscated Servers</h3>
+        <p>Obfuscated Servers are designed to hide the fact that you're using a VPN. This is especially useful in countries where VPN usage is restricted or monitored. By making your VPN traffic appear as regular internet traffic, these servers help you bypass government-imposed firewalls and censorship.</p>
+
+        <h3>5. Kill Switch</h3>
+        <p>A Kill Switch is a critical security feature that automatically disconnects your device from the internet if the VPN connection drops unexpectedly. This prevents your real IP address and sensitive data from being exposed, ensuring that your privacy remains intact even during connection interruptions.</p>
+
+        <h3>6. No-Logs Policy</h3>
+        <p>While not a feature per se, a strict No-Logs Policy is essential for ensuring your privacy. VPN providers that adhere to this policy do not store any records of your online activities, making it impossible for third parties to trace your actions back to you.</p>
+
+        <h3>7. Ad and Malware Blocking</h3>
+        <p>Some advanced VPNs come with built-in ad and malware blocking features. These tools protect you from intrusive advertisements and malicious software, enhancing your overall browsing experience and safeguarding your device from potential threats.</p>
+
+        <h3>8. Cross-Platform Compatibility</h3>
+        <p>Modern VPNs are designed to work seamlessly across various devices and operating systems, including desktops, smartphones, tablets, and even routers. This ensures that all your devices are protected, regardless of the platform you use.</p>
+    </div>
+
 </div>
 
 <script>
@@ -340,6 +419,24 @@
         resultsSection.scrollIntoView({ behavior: 'smooth' });
 
         updateIframeHeight(); // Adjust iframe height if embedded
+    }
+
+    function resetQuiz() {
+        const quizForm = document.getElementById('quizForm');
+        const results = document.getElementById('results');
+        const correctAnswersDiv = document.getElementById('correctAnswers');
+
+        // Reset the form
+        quizForm.reset();
+
+        // Reset colors of questions
+        const questions = document.querySelectorAll('.question');
+        questions.forEach(question => {
+            question.style.color = 'black';
+        });
+
+        // Hide results
+        results.style.display = 'none';
     }
 
     // Dynamic height adjustment for iframe
