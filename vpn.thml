@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VPN, Privacy, and Security Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* Zmiana na białe tło */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .question {
+            margin-bottom: 30px;
+        }
+        .question h3 {
+            margin-bottom: 15px;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin-bottom: 10px;
+        }
+        .options input {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .submit-btn:hover {
+            background-color: #c0392b;
+        }
+        #results {
+            display: none;
+            margin-top: 40px;
+            text-align: center;
+        }
+        #results h2 {
+            margin-bottom: 20px;
+        }
+        #results p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        #promotion {
+            margin-top: 40px;
+            text-align: center;
+            background-color: #ecf0f1;
+            padding: 30px;
+            border-radius: 5px;
+        }
+        #promotion p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        #promotion a {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #27ae60;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        #promotion a:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form id="quizForm">
+        <div class="question">
+            <h3>1. What does VPN stand for?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q1" value="a">a) Virtual Private Network</label></li>
+                <li><label><input type="radio" name="q1" value="b">b) Very Personal Network</label></li>
+                <li><label><input type="radio" name="q1" value="c">c) Virtual Public Network</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>2. Which protocol is commonly used to secure VPN connections?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q2" value="a">a) HTTP</label></li>
+                <li><label><input type="radio" name="q2" value="b">b) HTTPS</label></li>
+                <li><label><input type="radio" name="q2" value="c">c) OpenVPN</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>3. What is the primary purpose of using a VPN?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q3" value="a">a) To speed up internet connection</label></li>
+                <li><label><input type="radio" name="q3" value="b">b) To enhance online privacy and security</label></li>
+                <li><label><input type="radio" name="q3" value="c">c) To access local networks remotely</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>4. Which U.S. President was associated with concerns about online privacy and the term "fake news"?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q4" value="a">a) Barack Obama</label></li>
+                <li><label><input type="radio" name="q4" value="b">b) Donald Trump</label></li>
+                <li><label><input type="radio" name="q4" value="c">c) Joe Biden</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>5. What is end-to-end encryption?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q5" value="a">a) Encryption between two endpoints</label></li>
+                <li><label><input type="radio" name="q5" value="b">b) A type of antivirus software</label></li>
+                <li><label><input type="radio" name="q5" value="c">c) A method to speed up data transmission</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>6. Which of the following helps protect your privacy online?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q6" value="a">a) Using strong, unique passwords</label></li>
+                <li><label><input type="radio" name="q6" value="b">b) Sharing personal information publicly</label></li>
+                <li><label><input type="radio" name="q6" value="c">c) Clicking on suspicious links</label></li>
+            </ul>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="checkAnswers()">Check Answers</button>
+    </form>
+
+    <div id="results">
+        <h2>Your Results</h2>
+        <p>You scored <span id="score"></span>/6.</p>
+        <div id="correctAnswers"></div>
+    </div>
+
+    <div id="promotion">
+        <p><strong>Your privacy matters</strong> — learn how to safeguard it effectively.</p>
+        <a href="your-promotion-link.com">Get Started HERE!</a>
+    </div>
+</div>
+
+<script>
+    function checkAnswers() {
+        const quizForm = document.getElementById('quizForm');
+        const results = document.getElementById('results');
+        const scoreSpan = document.getElementById('score');
+        const correctAnswersDiv = document.getElementById('correctAnswers');
+
+        const correctAnswers = {
+            q1: 'a',
+            q2: 'c',
+            q3: 'b',
+            q4: 'b',
+            q5: 'a',
+            q6: 'a'
+        };
+
+        let score = 0;
+        let output = '<ol>';
+
+        for (let i = 1; i <= 6; i++) {
+            const userAnswer = quizForm['q' + i].value;
+            const question = document.querySelector('input[name="q' + i + '"][value="' + correctAnswers['q' + i] + '"]').parentNode.parentNode;
+            if (userAnswer === correctAnswers['q' + i]) {
+                score++;
+                question.style.color = 'green';
+            } else {
+                question.style.color = 'red';
+            }
+            output += '<li>' + (userAnswer === correctAnswers['q' + i] ? '<span class="correct">Correct</span>' : '<span class="incorrect">Incorrect</span>') + ' - Correct answer: ' + correctAnswers['q' + i] + '</li>';
+        }
+
+        output += '</ol>';
+
+        scoreSpan.textContent = score;
+        correctAnswersDiv.innerHTML = output;
+        results.style.display = 'block';
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+</script>
+
+</body>
+</html>
