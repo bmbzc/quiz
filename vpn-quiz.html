@@ -53,6 +53,21 @@
         .submit-btn:hover {
             background-color: #c0392b;
         }
+        .reset-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .reset-btn:hover {
+            background-color: #2980b9;
+        }
         #results {
             display: none;
             margin-top: 40px;
@@ -100,7 +115,7 @@
             body {
                 padding: 10px;
             }
-            .submit-btn {
+            .submit-btn, .reset-btn {
                 font-size: 16px;
             }
             #promotion p {
@@ -134,23 +149,21 @@
             line-height: 1.6;
             margin-bottom: 20px;
         }
+        /* Visibility Control */
+        .tablet-and-desktop-only,
         .desktop-only {
             display: none; /* Hidden by default */
         }
+        /* First Article: Visible on tablet (≥768px) and desktop (≥1024px) */
         @media screen and (min-width: 768px) {
-            /* First Article: Visible on tablet and up */
             .tablet-and-desktop-only {
                 display: block;
             }
-            /* Second Article: Visible only on desktop */
+        }
+        /* Second Article: Visible only on desktop (≥1024px) */
+        @media screen and (min-width: 1024px) {
             .desktop-only {
                 display: block;
-            }
-        }
-        @media screen and (max-width: 767px) {
-            /* Ensure second article remains hidden on small screens */
-            .desktop-only {
-                display: none;
             }
         }
         /* Results Styling */
@@ -162,22 +175,6 @@
         #correctAnswers li {
             margin-bottom: 10px;
             font-size: 18px;
-        }
-        /* Reset Button Styling */
-        .reset-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            margin-top: 10px;
-            border-radius: 5px;
-        }
-        .reset-btn:hover {
-            background-color: #2980b9;
         }
     </style>
 </head>
@@ -241,7 +238,7 @@
         </div>
 
         <button type="button" class="submit-btn" onclick="checkAnswers()">Check Answers</button>
-        <!-- <button type="button" class="reset-btn" onclick="resetQuiz()">Reset Quiz</button> -->
+        <button type="button" class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
     </form>
 
     <div id="results">
