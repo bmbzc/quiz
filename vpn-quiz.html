@@ -334,7 +334,11 @@
         scoreSpan.textContent = score;
         correctAnswersDiv.innerHTML = output;
         results.style.display = 'block';
-        window.scrollTo(0, document.body.scrollHeight); // Scroll to the bottom to show results
+
+        // Scroll to the promotion section where the "Get Started HERE!" link is located
+        const promotionSection = document.getElementById('promotion');
+        promotionSection.scrollIntoView({ behavior: 'smooth' });
+
         updateIframeHeight(); // Adjust iframe height if embedded
     }
 
