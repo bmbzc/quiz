@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPN Quiz</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Iframe to load the quiz -->
+<iframe src="https://twoja-strona.com/quiz" id="quizIframe"></iframe>
+
+<script>
+// Function to receive the height from the iframe
+window.addEventListener("message", function(event) {
+    var iframe = document.getElementById('quizIframe');
+    // Update the height of the iframe based on the message received from the iframe content
+    iframe.style.height = event.data + "px";
+});
+</script>
+
+</body>
+</html>
