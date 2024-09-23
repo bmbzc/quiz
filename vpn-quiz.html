@@ -335,9 +335,9 @@
         correctAnswersDiv.innerHTML = output;
         results.style.display = 'block';
 
-        // Scroll to the promotion section where the "Get Started HERE!" link is located
-        const promotionSection = document.getElementById('promotion');
-        promotionSection.scrollIntoView({ behavior: 'smooth' });
+        // Scroll to the results section
+        const resultsSection = document.getElementById('results');
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
 
         updateIframeHeight(); // Adjust iframe height if embedded
     }
