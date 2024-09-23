@@ -3,306 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VPN, Privacy, and Security Quiz</title>
+    <title>Embedded Quiz</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
+        body, html {
             margin: 0;
-            padding: 20px;
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-        .container {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            box-sizing: border-box;
-        }
-        .question {
-            margin-bottom: 30px;
-        }
-        .question h3 {
-            margin-bottom: 15px;
-        }
-        .options {
-            list-style-type: none;
             padding: 0;
-        }
-        .options li {
-            margin-bottom: 10px;
-        }
-        .options input {
-            margin-right: 10px;
-        }
-        .submit-btn {
-            display: block;
+            height: 100%;
             width: 100%;
-            padding: 15px;
-            background-color: #e74c3c;
-            color: #fff;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100vh; /* Ustawienie początkowej wysokości */
             border: none;
-            font-size: 18px;
-            cursor: pointer;
-            margin-top: 20px;
-            border-radius: 5px;
-        }
-        .submit-btn:hover {
-            background-color: #c0392b;
-        }
-        #results {
-            display: none;
-            margin-top: 40px;
-            text-align: center;
-        }
-        #results h2 {
-            margin-bottom: 20px;
-        }
-        #results p {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        .correct {
-            color: green;
-        }
-        .incorrect {
-            color: red;
-        }
-        #promotion {
-            margin-top: 40px;
-            text-align: center;
-            background-color: #ecf0f1;
-            padding: 30px;
-            border-radius: 5px;
-        }
-        #promotion p {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-        #promotion a {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #27ae60;
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-        }
-        #promotion a:hover {
-            background-color: #219150;
-        }
-        @media screen and (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            .submit-btn {
-                font-size: 16px;
-            }
-            #promotion p {
-                font-size: 18px;
-            }
-            #promotion a {
-                font-size: 16px;
-            }
-        }
-        .desktop-only {
-            margin-top: 40px;
-        }
-        @media screen and (max-width: 1024px) {
-            .desktop-only {
-                display: none;
-            }
-        }
-        /* Stylizacja obrazu */
-        .article-image {
-            width: 100%;
-            height: auto;
-            max-width: 800px;
-            margin: 20px 0;
-            object-fit: cover; /* Zapewnia, że obraz zachowa proporcje i nie będzie rozciągnięty */
-        }
-        .article {
-            margin-top: 40px;
-        }
-        .article h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-        .article h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-        .article p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <form id="quizForm">
-        <div class="question">
-            <h3>1. What does VPN stand for?</h3>
-            <ul class="options">
-                <li><label><input type="radio" name="q1" value="a">a) Virtual Private Network</label></li>
-                <li><label><input type="radio" name="q1" value="b">b) Very Personal Network</label></li>
-                <li><label><input type="radio" name="q1" value="c">c) Virtual Public Network</label></li>
-            </ul>
-        </div>
-
-        <div class="question">
-            <h3>2. Which protocol is commonly used to secure VPN connections?</h3>
-            <ul class="options">
-                <li><label><input type="radio" name="q2" value="a">a) HTTP</label></li>
-                <li><label><input type="radio" name="q2" value="b">b) HTTPS</label></li>
-                <li><label><input type="radio" name="q2" value="c">c) OpenVPN</label></li>
-            </ul>
-        </div>
-
-        <div class="question">
-            <h3>3. What is the primary purpose of using a VPN?</h3>
-            <ul class="options">
-                <li><label><input type="radio" name="q3" value="a">a) To speed up internet connection</label></li>
-                <li><label><input type="radio" name="q3" value="b">b) To enhance online privacy and security</label></li>
-                <li><label><input type="radio" name="q3" value="c">c) To access local networks remotely</label></li>
-            </ul>
-        </div>
-
-        <button type="button" class="submit-btn" onclick="checkAnswers()">Check Answers</button>
-    </form>
-
-    <div id="results">
-        <h2>Your Results</h2>
-        <p>You scored <span id="score"></span>/6.</p>
-        <div id="correctAnswers"></div>
-    </div>
-
-    <div id="promotion">
-        <p><strong>Your privacy matters</strong> — learn how to safeguard it effectively.</p>
-        <a href="your-promotion-link.com">Get Started HERE!</a>
-    </div>
-
-    <!-- Artykuł wyświetlany tylko na desktopie -->
-    <div class="desktop-only article">
-	    <h2>Why You Should Use a VPN: Key Benefits Explained</h2>
-	    
-	    <div style="display: flex; flex-wrap: wrap; align-items: flex-start;">
-	        <!-- Wstęp po lewej -->
-	        <div style="flex: 1; min-width: 300px;">
-	            <p>A Virtual Private Network (VPN) offers a variety of advantages for both personal and business users. It helps protect your online privacy, improves security, and allows you to bypass geographical restrictions. In this article, we will delve into the key reasons why you should consider using a VPN and how it can benefit your daily online activities.</p>
-	        </div>
-	        <!-- Obraz po prawej -->
-	        <div style="flex: 0 0 300px; max-width: 300px; margin-left: 20px;">
-	            <img class="article-image" src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg" alt="VPN Security Benefits">
-	        </div>
-	    </div>
-	
-	    <!-- Kolejne sekcje artykułu -->
-	    <h3>1. Enhanced Privacy and Security</h3>
-	    <p>One of the main reasons people use VPNs is to protect their privacy online. A VPN encrypts your internet connection, preventing anyone from snooping on your activity, whether it's your ISP, hackers, or even government agencies. This layer of encryption is especially useful when using unsecured public Wi-Fi networks, such as those in cafes or airports.</p>
-	
-	    <!-- Obraz w treści artykułu, po lewej stronie -->
-	    <div style="display: flex; align-items: center; margin: 20px 0;">
-	        <div style="flex: 0 0 250px; margin-right: 20px;">
-	            <img src="https://24ai.tech/en/wp-content/uploads/sites/3/2023/10/01_product_1_sdelat-izobrazhenie-1-1-7-scaled.jpg" alt="VPN Privacy" style="width: 100%; height: auto;">
-	        </div>
-	        <div style="flex: 1;">
-	            <p>VPNs also play a crucial role in ensuring data security when conducting financial transactions or accessing sensitive information. This added layer of protection can help safeguard your personal data from cyber threats and keep your online activities private.</p>
-	        </div>
-	    </div>
-	
-	    <h3>2. Access to Geographically Restricted Content</h3>
-	    <p>Many streaming services and websites block access to certain content based on your geographical location. A VPN allows you to connect to servers in different countries, making it appear as though you're browsing from another region. This can help you bypass these restrictions and access content that would otherwise be unavailable in your area.</p>
-	
-	    <h3>3. Secure Remote Work and Communication</h3>
-	    <p>For businesses, especially those with remote employees, a VPN is crucial for secure communication and data sharing. VPNs create encrypted tunnels for transferring sensitive business data, ensuring that employees can access company resources safely, even when working from home or other remote locations. This is especially important in industries where data privacy is a top priority, such as finance or healthcare.</p>
-	
-	    <!-- Obraz w treści artykułu, po prawej stronie -->
-	    <div style="display: flex; align-items: center; margin: 20px 0;">
-	        <div style="flex: 1;">
-	            <p>Bypassing censorship and firewalls is another significant benefit of using a VPN. In countries where internet access is heavily regulated, VPNs offer users a way to access information freely and securely without being blocked by local authorities.</p>
-	        </div>
-	        <div style="flex: 0 0 250px; margin-left: 20px;">
-	            <img src="https://24ai.tech/en/wp-content/uploads/sites/3/2023/10/01_product_1_sdelat-izobrazhenie-1-1-7-scaled.jpg" alt="VPN Security" style="width: 100%; height: auto;">
-	        </div>
-	    </div>
-	
-	    <h3>4. Bypass Censorship and Firewalls</h3>
-	    <p>In certain countries, governments impose strict censorship on the internet, blocking access to certain websites or services. VPNs help users overcome these restrictions by masking their real IP addresses and allowing them to connect to servers in regions where the internet is free and open. This is crucial for maintaining access to uncensored information.</p>
-	
-	    <h3>5. Avoid Bandwidth Throttling</h3>
-	    <p>Internet service providers (ISPs) sometimes throttle, or slow down, your internet connection based on your online activities, such as streaming or gaming. A VPN helps prevent this by masking your internet traffic, making it harder for ISPs to determine what you are doing online. This can result in a faster and more consistent browsing experience.</p>
-	
-	    <h3>6. Protecting Your Financial Transactions</h3>
-	    <p>When you're shopping online or managing your finances through online banking, the last thing you want is for hackers to intercept your transactions. VPNs provide an additional layer of security by encrypting your connection, ensuring that your credit card details, bank login credentials, and other sensitive information remain safe from cybercriminals.</p>
-	
-	    <h3>7. Improved Gaming Experience</h3>
-	    <p>For gamers, a VPN can be an invaluable tool. It allows you to access games that are only available in certain regions, reduces lag by connecting to optimal servers, and can help protect against DDoS (Distributed Denial of Service) attacks from malicious players. Furthermore, some VPNs allow you to bypass gaming geo-blocks, giving you access to early game releases or restricted servers.</p>
-	
-	    <h3>8. Easy to Set Up and Use</h3>
-	    <p>Despite all these advanced benefits, VPNs are surprisingly easy to set up and use. Most VPN providers offer user-friendly apps for multiple devices, including desktops, smartphones, and tablets. This means that even users without technical expertise can start using a VPN in just a few clicks, enjoying instant benefits such as enhanced privacy and access to restricted content.</p>
-	</div>
-
-
-</div>
+<!-- Iframe to load the quiz -->
+<iframe src="https://bmbzc.github.io/quiz/vpn-quiz.html" id="quizIframe"></iframe>
 
 <script>
-    // Function to show results and send height to parent
-    function checkAnswers() {
-        const quizForm = document.getElementById('quizForm');
-        const results = document.getElementById('results');
-        const scoreSpan = document.getElementById('score');
-        const correctAnswersDiv = document.getElementById('correctAnswers');
-
-        const correctAnswers = {
-            q1: 'a) Virtual Private Network',
-            q2: 'c) OpenVPN',
-            q3: 'b) To enhance online privacy and security',
-            q4: 'b) Donald Trump',
-            q5: 'a) Encryption between two endpoints',
-            q6: 'a) Using strong, unique passwords'
-        };
-
-        let score = 0;
-        let output = '<ol>';
-
-        for (let i = 1; i <= 6; i++) {
-            const userAnswer = quizForm['q' + i].value;
-            const question = document.querySelector('input[name="q' + i + '"][value="' + correctAnswers['q' + i] + '"]').parentNode.parentNode;
-            if (userAnswer === correctAnswers['q' + i]) {
-                score++;
-                question.style.color = 'green';
-            } else {
-                question.style.color = 'red';
-            }
-            output += '<li>' + (userAnswer === correctAnswers['q' + i] ? '<span class="correct">Correct</span>' : '<span class="incorrect">Incorrect</span>') + ' - Correct answer: ' + correctAnswers['q' + i] + '</li>';
-        }
-
-        output += '</ol>';
-
-        scoreSpan.textContent = score;
-        correctAnswersDiv.innerHTML = output;
-        results.style.display = 'block';
-        updateIframeHeight(); // Send new height to the parent window
-    }
-
-    // Send the height of the page to the parent window on load and resize
-    function updateIframeHeight() {
-        var body = document.body;
-        var html = document.documentElement;
-        var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight); // Uwzględniamy różne metody obliczenia wysokości
-        window.parent.postMessage(height, "*");
-    }
-
-    // Send height on load
-    window.addEventListener("load", updateIframeHeight);
-    // Send height on window resize
-    window.addEventListener("resize", updateIframeHeight);
+// Function to receive the height from the iframe
+window.addEventListener("message", function(event) {
+    var iframe = document.getElementById('quizIframe');
+    // Update the height of the iframe based on the message received from the iframe content
+    iframe.style.height = event.data + "px";
+});
 </script>
 
 </body>
