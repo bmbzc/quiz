@@ -144,6 +144,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #fdfdfd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .article h2 {
             font-size: 28px;
@@ -170,8 +171,8 @@
         .desktop-only {
             display: none; /* Hidden by default */
         }
-        /* First Article: Visible on tablet (≥768px) and desktop (≥1024px) */
-        @media screen and (min-width: 768px) {
+        /* First Article: Visible on tablet (≥600px) and desktop (≥1024px) */
+        @media screen and (min-width: 600px) {
             .tablet-and-desktop-only {
                 display: block;
             }
