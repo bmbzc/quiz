@@ -54,19 +54,7 @@
             background-color: #c0392b;
         }
         .reset-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            margin-top: 10px;
-            border-radius: 5px;
-        }
-        .reset-btn:hover {
-            background-color: #2980b9;
+            display: none; /* Hidden from view */
         }
         #results {
             display: none;
@@ -119,7 +107,7 @@
             body {
                 padding: 10px;
             }
-            .submit-btn, .reset-btn {
+            .submit-btn {
                 font-size: 16px;
             }
             #promotion p {
@@ -163,7 +151,7 @@
             line-height: 1.6;
             margin-bottom: 20px;
         }
-        .article p:first-of-type {
+        .article p.intro {
             font-weight: bold;
         }
         /* Visibility Control */
@@ -171,8 +159,8 @@
         .desktop-only {
             display: none; /* Hidden by default */
         }
-        /* First Article: Visible on tablet (≥600px) and desktop (≥1024px) */
-        @media screen and (min-width: 600px) {
+        /* First Article: Visible on tablet (≥480px) and desktop (≥1024px) */
+        @media screen and (min-width: 480px) {
             .tablet-and-desktop-only {
                 display: block;
             }
@@ -255,6 +243,7 @@
         </div>
 
         <button type="button" class="submit-btn" onclick="checkAnswers()">Check Answers</button>
+        <!-- Reset button is hidden but remains in the DOM -->
         <button type="button" class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
     </form>
 
@@ -276,7 +265,7 @@
         <div style="display: flex; flex-wrap: wrap; align-items: flex-start;">
             <!-- Introduction on the left -->
             <div style="flex: 1; min-width: 300px;">
-                <p>A Virtual Private Network (VPN) offers a variety of advantages for both personal and business users. It helps protect your online privacy, improves security, and allows you to bypass geographical restrictions. In this article, we will delve into the key reasons why you should consider using a VPN and how it can benefit your daily online activities.</p>
+                <p class="intro">A Virtual Private Network (VPN) offers a variety of advantages for both personal and business users. It helps protect your online privacy, improves security, and allows you to bypass geographical restrictions. In this article, we will delve into the key reasons why you should consider using a VPN and how it can benefit your daily online activities.</p>
             </div>
             <!-- Image on the right -->
             <div style="flex: 0 0 300px; max-width: 300px; margin-left: 20px;">
@@ -337,7 +326,7 @@
         <div style="display: flex; flex-wrap: wrap; align-items: flex-start;">
             <!-- Introduction on the left -->
             <div style="flex: 1; min-width: 300px;">
-                <p>As the demand for online privacy and security continues to rise, VPN providers are constantly evolving their services to offer more advanced features. In this article, we explore some of the cutting-edge VPN functionalities that can enhance your online experience, providing greater control and protection.</p>
+                <p class="intro">As the demand for online privacy and security continues to rise, VPN providers are constantly evolving their services to offer more advanced features. In this article, we explore some of the cutting-edge VPN functionalities that can enhance your online experience, providing greater control and protection.</p>
             </div>
             <!-- Image on the right -->
             <div style="flex: 0 0 300px; max-width: 300px; margin-left: 20px;">
